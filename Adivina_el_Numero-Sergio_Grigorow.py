@@ -2,11 +2,13 @@
 1. Se importan Librerias
 2. Se definen funciones que se utilizaran durante la ejecucion
 3. Se define ciclo principal del programa
+4. En necesario installar el modulo pwinput
 '''
 
 import os
 from random import randint
 import pandas as pd
+import pwinput
 
 def limpiar_pantalla():
     '''Limpiar la pantalla para que informacion siguiente aparezca
@@ -142,7 +144,7 @@ def dos_jugadores():
     
     numero_secreto = 'x'
     while not numero_secreto.isnumeric() or int(numero_secreto) not in range(1, 1001):
-        numero_secreto = input(f'{nombre2}, introduce el número secreto (entre 1 y 1000) que {nombre1} debe adivinar: ')
+        numero_secreto = pwinput.pwinput(prompt=f'{nombre2}, introduce el número secreto (entre 1 y 1000) que {nombre1} debe adivinar: ', mask='*')
     numero_secreto = int(numero_secreto)
 
     niveles = {1: 'Fácil', 2: 'Medio', 3: 'Difícil'}
